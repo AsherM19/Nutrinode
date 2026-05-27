@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --nutri-emerald: #68dba9;
+  --nutri-emerald-deep: #25a475;
+  --nutri-emerald-ink: #003825;
+  --nutri-emerald-soft: rgba(104, 219, 169, 0.15);
+}
+
+body {
+  @apply antialiased;
+  background: #0a0a0a;
+  background-attachment: fixed;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background: #f1f4f7;
+  color: #1c1e21;
+}
+
+html.light .shadow-float {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+html.light .shadow-nav {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-manrope), Manrope, system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans), Inter, system-ui, sans-serif;
+  }
+}
+
+/* Stitch blueprint shadows (also available as Tailwind shadow-float / shadow-nav). */
+.shadow-float {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.shadow-nav {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+.material-symbols-outlined[data-fill="1"] {
+  font-variation-settings:
+    "FILL" 1,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-2xl bg-white/5;
+  }
+
+  .glass-panel {
+    background: rgba(27, 33, 29, 0.72) !important;
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(61, 74, 66, 0.65);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+}
+
+/* Custom map markers: primary accent + ring (Leaflet divIcon) */
+.leaflet-div-icon.nutri-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.nutri-leaflet-marker__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: #68dba9;
+  border: 2px solid #1b211d;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.nutri-leaflet-marker__dot--gold {
+  background: #d4af37;
+}
+
+.nutri-map-popup .leaflet-popup-content-wrapper {
+  border-radius: 1rem;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(61, 74, 66, 0.8);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 18px 40px -16px rgba(0, 0, 0, 0.55);
+}
+
+.nutri-map-popup .leaflet-popup-content {
+  margin: 0;
+  min-width: 260px;
+}
+
+.nutri-map-popup .leaflet-popup-tip {
+  background: #1b211d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.nutri-popup-card {
+  padding: 1rem 1.1rem 1.1rem;
+  background: linear-gradient(180deg, #1b211d 0%, #0a0a0a 100%);
+}
